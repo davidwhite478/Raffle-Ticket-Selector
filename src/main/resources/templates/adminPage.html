@@ -1,0 +1,45 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+  <div layout:fragment="body">
+  
+  	<h1>Admin Page</h1>
+  	
+  	<ul>
+  		<li>Total number of tickets: <span th:text="${totalTickets}"></span></li>
+  		<li>Total tickets sold: <span th:text="${totalSold}"></span></li>
+  		<li>Total tickets remaining: <span th:text="${totalRemaining}"></span></li>
+  		<li>Total tickets selected: <span th:text="${totalSelected}"></span></li>
+  	</ul>
+  	
+  	<a th:if="${totalRemaining > 0}" class="btn btn-info" th:href="@{/administration/add-person(adminKey=${adminKey})}">Add Person</a>
+  
+  	  <table class="table table-hover" style="max-width:800px; margin-top:20px">
+	  	<thead>
+	  		<tr>
+	  			<th>ID</th>
+	  			<th>Name</th>
+	  			<th>Tickets Purchased</th>
+	  			<th>Tickets Selected</th>
+	  			<th></th>
+	  			<th></th>
+	  		</tr>
+	  	</thead>
+	  	<tbody>
+	  	<th:block th:each="player : ${playerList}">
+	  		<tr>
+	  			<td th:text="${player.id}"></td>
+		  		<td th:text="${player.name}"></td>
+		  		<td th:text="${player.purchasedTickets}"></td>
+		  		<td th:text="${player.selectedTickets}"></td>
+		  		<td><span class="fas" th:classappend="${player.purchasedTickets == player.selectedTickets} ? 'fa-check' : 'fa-exclamation-triangle'"></span></td>
+		  		<td><a th:if="${player.purchasedTickets != player.selectedTickets}" th:href="@{/select-tickets(code=${player.code})}">Ticket Selection Link</a></td>
+	  		</tr>
+	  	</th:block>
+	  	</tbody>
+	  </table>
+    
+  </div>
+
+</html>

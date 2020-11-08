@@ -1,0 +1,17 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+  <div layout:fragment="body">
+    <div class="errorBox">An error has occurred! Please try again.<br/><br/><strong>Error:</strong><br/>
+    
+    <th:block th:each="errorAttribute : ${errorAttributes}">
+    	<div th:text="${errorAttribute}"></div>
+    </th:block>
+    
+    
+    
+    </div>
+  </div>
+
+</html>

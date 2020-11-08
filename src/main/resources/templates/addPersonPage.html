@@ -1,0 +1,26 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorator="base">
+
+  <div layout:fragment="body">
+  	
+  	<form style="width:500px;" th:action="@{/administration/add-person-action}" method="post">
+	  <fieldset>
+	    <legend>Add Person</legend>
+	    <div class="form-group">
+	      <label for="personName">Name</label>
+	      <input type="text" class="form-control" id="personName" name="name" placeholder="Player's Name" required="true" />
+	    </div>
+	    <div class="form-group">
+	      <label for="purchasedTickets">Purchased Tickets</label>
+	      <input type="number" min="1" max="50" class="form-control" name="purchased" id="purchasedTickets" required="true" />
+	    </div>
+	    <input type="text" hidden="true" th:value="${adminKey}" name="adminKey"/>
+	    <button type="submit" class="btn btn-primary">Add Person</button>
+	    <a class="btn btn-secondary" th:href="@{/administration(adminKey=${adminKey})}">Cancel</a>
+	  </fieldset>
+	</form>
+    
+  </div>
+
+</html>
