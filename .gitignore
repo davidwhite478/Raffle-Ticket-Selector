@@ -1,7 +1,6 @@
 .gradle
 /build/
 /bin/
-/deployment/
 /.externalToolBuilders/
 /.settings/
 !gradle/wrapper/gradle-wrapper.jar
@@ -30,3 +29,5 @@ nbdist/
 
 raffle.db
 *.log
+/deployment/*
+!/deployment/populate-database.sql
